@@ -71,3 +71,8 @@ typings/
 
 # Serverless directories
 .serverless
+
+# Open source
+ios/Podfile.lock
+ios/Pods
+.expo
