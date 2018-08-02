@@ -1,21 +1,14 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text, Button } from 'react-native';
 
-const Link = ({ active, children, onClick }) => {
-    if (active) {
-        return (
-            <View>{children}</View>
-        );
-    } else {
-        return (
-            <View onClick={e => {
-                e.preventDefault();
-                onClick();
-            }}>
-                {children}
-            </View>
-        )
-    }
+const Link = ({ active, children, setFilter }) => {
+    return (
+        <Text
+            onPress={() => setFilter()}
+        >
+            {children}
+        </Text>
+    );
 };
 
 export default Link;

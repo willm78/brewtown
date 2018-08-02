@@ -8,17 +8,14 @@ const Footer = () => {
     return (
         <View>
             <Text>Show</Text>
-            {' '}
             <FilterLink filter={VisibilityFilters.SHOW_ALL}>
-                All
+                <Text>All</Text>
             </FilterLink>
-            {', '}
             <FilterLink filter={VisibilityFilters.SHOW_ACTIVE}>
-                Active
+                <Text>Active</Text>
             </FilterLink>
-            {', '}
             <FilterLink filter={VisibilityFilters.SHOW_COMPLETED}>
-                Completed
+                <Text>Completed</Text>
             </FilterLink>
         </View>
     );

@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const Recipe = ({ onClick, completed, recipe }) => {
+const Recipe = ({ onPress, completed, recipe }) => {
     return (
-        <View onClick={onClick}>
+        <View onPress={onPress}>
             <Text style={{textDecorationLine: completed ? 'line-through' : 'none'}}>
                 { recipe }
             </Text>

@@ -7,7 +7,7 @@ const RecipeList = ({ recipes, onRecipeClick }) => {
     return (
         <View>
             {recipes.map((recipe, index) => (
-                <Recipe key={index} {...recipe} onClick={() => onRecipeClick(index)} />
+                <Recipe key={index} {...recipe} onPress={() => onRecipeClick(index)} />
             ))}
         </View>
     );
