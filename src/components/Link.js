@@ -3,11 +3,13 @@ import { View, Text, Button } from 'react-native';
 
 const Link = ({ active, children, setFilter }) => {
     return (
+        <View>
         <Text
-            onPress={() => setFilter()}
+            onPress={setFilter}
         >
-            {children}
+        { children }
         </Text>
+        </View>
     );
 };
 

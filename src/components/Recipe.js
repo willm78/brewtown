@@ -3,8 +3,11 @@ import { View, Text } from 'react-native';
 
 const Recipe = ({ onPress, completed, recipe }) => {
     return (
-        <View onPress={onPress}>
-            <Text style={{textDecorationLine: completed ? 'line-through' : 'none'}}>
+        <View>
+            <Text
+                onPress={onPress}
+                style={{color: completed ? 'green' : 'red'}}
+            >
                 { recipe }
             </Text>
         </View>        

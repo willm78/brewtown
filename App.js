@@ -1,13 +1,17 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import App from './view';
-import getstore from './state';
+import App from './src/view';
+import configureStore from './src/store';
 
-const store = getstore();
+export const store = configureStore();
 
-export default () => (
-    <Provider store={store}>
-        <App />
-    </Provider>
-);
+export default class extends React.Component {
+    render() {
+        return (
+            <Provider store={store}>
+                <App />
+            </Provider>
+        );
+    }
+};
