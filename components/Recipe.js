@@ -1,14 +1,17 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 
-const Recipe = ({ onPress, completed, recipe }) => {
+const Recipe = ({ onClick, completed, recipe }) => {
     return (
-        <View onPress={onPress}>
-            <Text style={{textDecorationLine: completed ? 'line-through' : 'none'}}>
-                { recipe }
+        <View>
+            <Text
+                onPress={onClick}
+                style={{color: completed ? 'red' : 'green'}}
+            >
+                {recipe}
             </Text>
         </View>        
     );
 };
 
-export default Recipe
+export default Recipe;

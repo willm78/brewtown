@@ -4,24 +4,27 @@ import { connect } from 'react-redux';
 import { FormLabel, FormInput } from 'react-native-elements'
 
 import { addRecipe } from '../actions';
+import TextInput from '../components/TextInput';
 
-let AddRecipe = ({ dispatch }) => {
-    let input;
-
-    return (
-        <View>
-            <FormLabel>Recipe</FormLabel>
-            <FormInput onChangeText = { text => {
-                this.input = text;
-            }}/>
-            <Button 
-                onPress={() => dispatch(addRecipe(this.input))}
-                title="Submit Recipe"
-            />
-        </View>
-    );
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        onClick: (input) => {
+            dispatch(addRecipe(input));
+        }
+    };
 };
 
-AddRecipe = connect()(AddRecipe);
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
+    return {
+        ...stateProps,
+        ...dispatchProps,
+        ...ownProps,
+        label: 'Recipe'
+    }
+}
 
-export default AddRecipe;
+export default connect(
+    null,
+    mapDispatchToProps,
+    mergeProps
+)(TextInput);

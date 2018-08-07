@@ -6,8 +6,12 @@ import getstore from './state';
 
 const store = getstore();
 
-export default () => (
-    <Provider store={store}>
-        <App />
-    </Provider>
-);
+export default class Root extends React.Component {
+    render() {
+        return (
+            <Provider store={store}>
+                <App />
+            </Provider>
+        );
+    };
+};
