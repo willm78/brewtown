@@ -4,8 +4,14 @@ let nextRecipe = 0;
 export const addRecipe = recipe => ({
     type: 'ADD_RECIPE',
     id: nextRecipe++,
+    author,
     recipe
 });
+
+export const toggleRecipe = id => ({
+    type: 'TOGGLE_RECIPE',
+    id
+})
 
 export const setVisibilityFilter = filter => ({
     type: 'SET_VISIBILITY_FILTER',

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 
+import { toggleRecipe } from '../actions';
 import RecipeList from '../components/RecipeList';
 
 const getVisibleRecipes = (recipes, filter) => {
@@ -9,7 +10,9 @@ const getVisibleRecipes = (recipes, filter) => {
         case 'SHOW_COMPLETED':
             return recipes.filter(r => r.completed);
         case 'SHOW_ACTIVE':
-            return recipes.filter(r => !r.competed);
+            return recipes.filter(r => !r.completed);
+        default:
+            return recipes;
     };
 };
 
@@ -19,8 +22,17 @@ const mapStateToProps = state => {
     };
 };
 
+const mapDispatchToProps = dispatch => {
+    return {
+        toggleRecipe: id => {
+            dispatch(toggleRecipe(id));
+        }
+    };
+};
+
 const VisibleRecipeList = connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(RecipeList);
 
 export default VisibleRecipeList;

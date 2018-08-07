@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
 
-const Link = ({ active, children, setFilter }) => {
+const Link = ({ active, children, onPress }) => {
     return (
         <Text
-            onPress={() => setFilter()}
+            onPress={() => onPress()}
         >
             {children}
         </Text>

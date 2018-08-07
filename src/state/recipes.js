@@ -9,6 +9,12 @@ const recipes = (state = [], action) => {
                     completed: false
                 }
             ];
+        case 'TOGGLE_RECIPE':
+            return state.map(recipe =>
+                (recipe.id === action.id)
+                    ? { ...recipe, completed: !recipe.completed }
+                    : recipe
+            );
         default:
             return state;
     };
