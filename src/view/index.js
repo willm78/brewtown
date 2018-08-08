@@ -1,34 +1,69 @@
-import React, { Component } from 'react';
-import { createTabNavigator, createStackNavigator } from 'react-navigation';
+import React from 'react';
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
-import HomeScreen from './HomeScreen';
-import OtherScreen from './OtherScreen';
+import NavigationService from './NavigationService';
 
-const RootStack = createStackNavigator(
+import LibraryStack from './LibraryStack';
+import ExploreStack from './ExploreStack';
+import CreateStack from './CreateStack';
+import ProfileStack from './ProfileStack';
+
+import tabBarIcon from '../components/tabBarIcon';
+
+import styles from './viewStyles';
+
+const TopLevelNavigator = createMaterialBottomTabNavigator(
     {
-        Home: {
-            screen: HomeScreen,
+        Library: {
+            screen: LibraryStack,
+            headerBackTitleVisible : true,
+            navigationOptions: {
+                title: 'Library',
+                tabBarIcon: tabBarIcon('apps'),
+            }
         },
-        Other: {
-            screen: OtherScreen,
+        Explore: {
+            screen: ExploreStack,
+            navigationOptions: {
+                title: 'Explore',
+                tabBarIcon: tabBarIcon('add-box'),
+            }
+        },
+        Create: {
+            screen: CreateStack,
+            navigationOptions: {
+                title: 'Create',
+                tabBarIcon: tabBarIcon('assignment'),
+            }
+        },
+        Profile: {
+            screen: ProfileStack,
+            navigationOptions: {
+                title: 'Profile',
+                tabBarIcon: tabBarIcon('account-box'),
+            }
         },
     },
     {
-        initialRouteName: 'Home',
-        navigationOptions: {
-            headerStyle: {
-                backgroundColor: '#f4511e',
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-                fontWeight: 'bold',
-            },
-        },
-    },
+        shifting: true,
+        labeled: true,
+        activeTintColor: '#e6ac00',
+        inactiveTintColor: '#333',
+        barStyle: styles.tabBar,
+        initialRouteName: 'Library',
+        order: ['Library', 'Explore', 'Create', 'Profile'],
+        backBehavior: 'initialRoute',
+    }
 );
 
 export default class App extends React.Component {
     render() {
-        return <RootStack />;
+        return (
+            <TopLevelNavigator 
+                ref={navigatorRef => {
+                    NavigationService.setTopLevelNavigator(navigatorRef);
+                }}
+            />
+        );
     }
 };

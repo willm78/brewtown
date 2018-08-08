@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import { Platform, StatusBar, StyleSheet, Text, Button } from 'react-native';
-import { SafeAreaView } from 'react-navigation';
+import { Platform, StatusBar, Text, Button } from 'react-native';
+import { SafeAreaView, withNavigation } from 'react-navigation';
 
 import Footer from '../components/Footer';
 import AddRecipe from '../containers/AddRecipe';
 import VisibleRecipeList from '../containers/VisibleRecipeList';
 import AppState from '../containers/AppState';
 
-export default class App extends Component {
+import styles from './viewStyles';
+
+class App extends Component {
     static navigationOptions = {
         headerTitle: 'Home',
     };
@@ -18,8 +20,9 @@ export default class App extends Component {
                 {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
                 <Button
                     title='Go To Other Screen'
-                    onPress={() => this.props.navigation.navigate('Other')}
+                    onPress={() => null}
                 />
+                <Text>`${JSON.stringify(this.props.navigation)}`</Text>
                 <Text>Brewtown</Text>
                 <AddRecipe />
                 <VisibleRecipeList />
@@ -29,12 +32,5 @@ export default class App extends Component {
         );
     };
 };
-    
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
+
+export default withNavigation(App);
