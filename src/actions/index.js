@@ -8,6 +8,15 @@ export const addRecipe = recipe => ({
   recipe
 });
 
+export const createRecipe = recipe => ({
+  type: "CREATE_RECIPE",
+  recipe
+});
+
+export const clearCreate = () => ({
+  type: "CLEAR_CREATE"
+});
+
 export const toggleRecipe = id => ({
   type: "TOGGLE_RECIPE",
   id

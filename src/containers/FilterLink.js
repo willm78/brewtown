@@ -1,4 +1,4 @@
-import { connect } from "../../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-redux";
+import { connect } from "react-redux";
 
 import { setVisibilityFilter } from "../actions";
 import Link from "../components/Link";
