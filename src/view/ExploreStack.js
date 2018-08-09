@@ -5,6 +5,7 @@ import { SafeAreaView, createStackNavigator } from "react-navigation";
 import HomeScreen from "./HomeScreen";
 import LibraryStack from "./LibraryStack";
 
+import AppState from "../containers/AppState";
 import styles from "./viewStyles";
 
 class ExploreScreen extends Component {
@@ -12,6 +13,7 @@ class ExploreScreen extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <Text>Explore Screen</Text>
+        <AppState />
       </SafeAreaView>
     );
   }

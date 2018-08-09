@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Text } from "react-native";
 import { SafeAreaView, createStackNavigator } from "react-navigation";
 
+import VisibleRecipeList from "../containers/VisibleRecipeList";
+
 import styles from "./viewStyles";
 
 class LibraryScreen extends Component {
@@ -9,6 +11,7 @@ class LibraryScreen extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <Text>Library Screen</Text>
+        <VisibleRecipeList />
       </SafeAreaView>
     );
   }

@@ -2,23 +2,14 @@
 // <http://www.beerxml.com/beerxml.htm>
 
 export const HOPS = [HOP];
-
 export const FERMENTABLES = [FERMENTABLE];
-
 export const YEASTS = [YEAST];
-
 export const MISCS = [MISC];
-
 export const WATERS = [WATER];
-
 export const STYLES = [STYLE];
-
 export const MASH_STEPS = [MASH_STEP];
-
 export const MASHS = [MASH];
-
 export const RECIPES = [RECIPE];
-
 export const EQUIPMENTS = [EQUIPMENT];
 
 //-----------------------------------------

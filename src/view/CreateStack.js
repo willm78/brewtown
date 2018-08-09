@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Text } from "react-native";
 import { SafeAreaView, createStackNavigator } from "react-navigation";
 
+import CreateRecipe from "../containers/CreateRecipe";
+
 import styles from "./viewStyles";
 
 class CreateScreen extends Component {
@@ -9,6 +11,7 @@ class CreateScreen extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <Text>Create Screen</Text>
+        <CreateRecipe />
       </SafeAreaView>
     );
   }

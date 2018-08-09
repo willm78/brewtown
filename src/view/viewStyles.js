@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
-const prim_col = "#333";
-const sec_col = "#666";
+const prim_col = "#666";
+const sec_col = "#888";
 
 const styles = StyleSheet.create({
   container: {

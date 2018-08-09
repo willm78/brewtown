@@ -1,13 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { addRecipe } from "../actions";
+import { createRecipe, addRecipe, clearCreate } from "../actions";
 import TextInput from "../components/TextInput";
 
+const mapStateToProps = state => {
+  return {
+    recipe: state.create
+  };
+};
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onPress: input => {
+    onUpdatePress: input => {
+      dispatch(createRecipe(input));
+    },
+    onSavePress: input => {
       dispatch(addRecipe(input));
+      dispatch(clearCreate());
     }
   };
 };
@@ -17,13 +26,14 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
     ...stateProps,
     ...dispatchProps,
     ...ownProps,
-    formLabel: "Recipe",
-    buttonLabel: "Update Recipe"
+    formLabel: "Create Recipe",
+    updateButtonLabel: "Update Recipe",
+    saveButtonLabel: "Save To Library"
   };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
   mergeProps
 )(TextInput);
