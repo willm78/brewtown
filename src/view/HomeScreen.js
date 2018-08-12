@@ -4,7 +4,6 @@ import { SafeAreaView, withNavigation } from "react-navigation";
 
 import Footer from "../components/Footer";
 import AddRecipe from "../containers/AddRecipe";
-import AppState from "../containers/AppState";
 
 import styles from "./viewStyles";
 
@@ -17,12 +16,8 @@ class App extends Component {
     return (
       <SafeAreaView style={styles.container}>
         {Platform.OS === "ios" && <StatusBar barStyle="default" />}
-        <Button title="Go To Other Screen" onPress={() => null} />
+        <Button title="Go To Other Screen" onPress={() => undefined} />
         <Text>Brewtown</Text>
-        <AddRecipe />
-        <VisibleRecipeList />
-        <Footer />
-        <AppState />
       </SafeAreaView>
     );
   }

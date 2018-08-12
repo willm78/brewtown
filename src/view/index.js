@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 
 import NavigationService from "./NavigationService";
@@ -8,9 +9,12 @@ import ExploreStack from "./ExploreStack";
 import CreateStack from "./CreateStack";
 import ProfileStack from "./ProfileStack";
 
+import LoginScreen from "./LoginScreen";
+
 import tabBarIcon from "../components/tabBarIcon";
 
 import styles from "./viewStyles";
+import FontAwesome from "../../node_modules/@expo/vector-icons/FontAwesome";
 
 const TopLevelNavigator = createMaterialBottomTabNavigator(
   {
@@ -56,8 +60,11 @@ const TopLevelNavigator = createMaterialBottomTabNavigator(
   }
 );
 
-export default class App extends React.Component {
+class App extends React.Component {
   render() {
+    if (!this.props.skipWelcomeScreen) {
+      return <LoginScreen />;
+    }
     return (
       <TopLevelNavigator
         ref={navigatorRef => {
@@ -67,3 +74,13 @@ export default class App extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    isLoggedIn: state.thisUser.isLoggedIn,
+    skipWelcomeScreen:
+      state.thisUser.isLoggedIn || state.thisUser.hasSkippedLogin
+  };
+};
+
+export default connect(mapStateToProps)(App);

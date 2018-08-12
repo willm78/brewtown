@@ -18,7 +18,7 @@ const getVisibleRecipes = (recipes, filter) => {
 
 const mapStateToProps = state => {
   return {
-    recipes: getVisibleRecipes(state.recipes, state.visibilityFilter)
+    recipes: getVisibleRecipes(state.recipe, state.visibilityFilter)
   };
 };
 

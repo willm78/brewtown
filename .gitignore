@@ -76,3 +76,6 @@ typings/
 ios/Podfile.lock
 ios/Pods
 .expo
+
+# Secret stuff
+secret.*

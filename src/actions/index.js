@@ -1,35 +1,7 @@
-const author = "author_name";
-let nextRecipe = 0;
+import * as loginActions from "./login";
+import * as counterActions from "./counter";
 
-export const addRecipe = recipe => ({
-  type: "ADD_RECIPE",
-  id: nextRecipe++,
-  author,
-  recipe
-});
-
-export const createRecipe = recipe => ({
-  type: "CREATE_RECIPE",
-  recipe
-});
-
-export const clearCreate = () => ({
-  type: "CLEAR_CREATE"
-});
-
-export const toggleRecipe = id => ({
-  type: "TOGGLE_RECIPE",
-  id
-});
-
-export const setVisibilityFilter = filter => ({
-  type: "SET_VISIBILITY_FILTER",
-  filter
-});
-
-export const VisibilityFilters = {
-  SHOW_ALL: "SHOW_ALL",
-  SHOW_COMPLETED: "SHOW_COMPLETED",
-  SHOW_ACTIVE: "SHOW_ACTIVE",
-  SHOW_BY_USER: "SHOW_BY_USER"
+module.exports = {
+  ...loginActions,
+  ...counterActions
 };

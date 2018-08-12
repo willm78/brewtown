@@ -1,14 +1,39 @@
 import React, { Component } from "react";
 import { Text } from "react-native";
 import { SafeAreaView, createStackNavigator } from "react-navigation";
+import { connect } from "react-redux";
 
 import styles from "./viewStyles";
+import FbLoginButton from "../containers/FacebookLogInButton";
 
 class ProfileScreen extends Component {
   render() {
+    if (this.props.isLoggedIn) {
+      return (
+        <Screen>
+          <Text>Profile Screen</Text>
+        </Screen>
+      );
+    }
+    return (
+      <Screen>
+        <FbLoginButton />
+      </Screen>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    isLoggedIn: state.thisUser.isLoggedIn
+  };
+};
+
+class Screen extends Component {
+  render() {
     return (
       <SafeAreaView style={styles.container}>
-        <Text>Profile Screen</Text>
+        {this.props.children}
       </SafeAreaView>
     );
   }
@@ -16,7 +41,7 @@ class ProfileScreen extends Component {
 
 const Stack = createStackNavigator(
   {
-    Home: ProfileScreen
+    Home: connect(mapStateToProps)(ProfileScreen)
   },
   {
     mode: "card",

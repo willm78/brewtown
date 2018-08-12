@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { createRecipe, addRecipe, clearCreate } from "../actions";
-import TextInput from "../components/TextInput";
+// import RecipeAccordion from "../components/RecipeAccordion";
 
 const mapStateToProps = state => {
   return {
@@ -12,11 +12,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onUpdatePress: input => {
-      //dispatch(createRecipe(input));
+      dispatch(createRecipe(input));
     },
     onSavePress: input => {
-      //dispatch(addRecipe(input));
-      //dispatch(clearCreate());
+      dispatch(addRecipe(input));
+      dispatch(clearCreate());
     }
   };
 };
@@ -32,8 +32,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-  mergeProps
-)(TextInput);
+export default connect()(RecipeAccordion);
+//mapStateToProps,
+//mapDispatchToProps,
+//mergeProps

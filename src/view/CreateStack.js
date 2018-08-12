@@ -10,8 +10,7 @@ class CreateScreen extends Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <Text>Create Screen</Text>
-        <CreateRecipe />
+        <Text>Hello</Text>
       </SafeAreaView>
     );
   }

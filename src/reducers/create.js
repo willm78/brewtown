@@ -1,4 +1,6 @@
-const create = (state = {}, action) => {
+import { RECIPE } from "../store/schema";
+
+const create = (state = RECIPE, action) => {
   switch (action.type) {
     case "CREATE_RECIPE":
       return {
@@ -6,7 +8,7 @@ const create = (state = {}, action) => {
       };
     case "CLEAR_CREATE":
       return {
-        recipe: ""
+        recipe: RECIPE
       };
     default:
       return state;
