@@ -8,10 +8,7 @@ import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 
 import rootReducer from "../reducers";
 
-isDebuggingInChrome = false;
-
 const loggerMiddleware = createLogger({
-  predicate: () => isDebuggingInChrome,
   collapsed: true,
   duration: true
 });
@@ -31,8 +28,11 @@ const store = createStore(
 
 const persistor = persistStore(store);
 
-if (isDebuggingInChrome) {
-  window.store = store;
+if (module.hot) {
+  // Enable Webpack hot module replacement for reducers
+  module.hot.accept("../reducers", () => {
+    store.replaceReducer(rootReducer);
+  });
 }
 
 export { store, persistor };

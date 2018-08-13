@@ -6,7 +6,7 @@ const thisUser = (state = initialState, action) => {
   switch (action.type) {
     case "LOGGED_IN":
       let {
-        id,
+        userName,
         name,
         facebookLoggedIn,
         facebookId,
@@ -24,6 +24,12 @@ const thisUser = (state = initialState, action) => {
       }
       if (facebookName === undefined) {
         facebookName = null;
+      }
+      if (userName === undefined) {
+        userName = null;
+      }
+      if (name === undefined) {
+        name = null;
       }
       return {
         isLoggedIn: true,

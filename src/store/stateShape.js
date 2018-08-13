@@ -9,7 +9,7 @@ export const defaultState = {
     loginInProgress: false,
     hasSkippedLogin: false,
     isSharing: null,
-    id: null,
+    userName: null,
     name: null
   },
   localCounter: 0,

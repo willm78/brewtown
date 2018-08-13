@@ -10,7 +10,7 @@ function _attemptLogin(user, pass) {
         ? resolve(
             JSON.stringify({
               message: "successful login",
-              id: 1,
+              userName: "admin",
               name: user
             })
           )
@@ -62,7 +62,6 @@ function facebookLogIn() {
         dispatch({
           type: "LOGGED_IN",
           data: {
-            id,
             name,
             facebookLoggedIn: true,
             facebookId: id,
