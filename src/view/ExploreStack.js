@@ -2,11 +2,8 @@ import React, { Component } from "react";
 import { Text, View, ScrollView } from "react-native";
 import { SafeAreaView, createStackNavigator } from "react-navigation";
 
-import HomeScreen from "./HomeScreen";
-import LibraryStack from "./LibraryStack";
-
 import styles from "./viewStyles";
-import { getQuery } from "../middleware/api";
+import { getQuery } from "../graphql/api";
 
 const ErrorScreen = ({ err }) => {
   return (
@@ -31,25 +28,30 @@ class Query extends Component {
     this.state = {
       loading: true,
       value: undefined,
+      value2: undefined,
       error: false
     };
   }
 
   componentDidMount() {
-    getQuery().then(
-      result => {
-        this.setState({
-          loading: false,
-          value: JSON.stringify(result)
-        });
-      },
-      err => {
-        this.setState({
-          loading: false,
-          value: JSON.stringify(err)
-        });
-      }
-    );
+    getQuery()
+      .then(
+        ({ result, normalizedData }) => {
+          this.setState({
+            loading: false,
+            value: JSON.stringify(result),
+            value2: JSON.stringify(normalizedData)
+          });
+        },
+        err => {
+          this.setState({
+            loading: false,
+            error: true,
+            value: JSON.stringify(err)
+          });
+        }
+      )
+      .catch(err => console.log("caught an error", err));
   }
 
   render() {
@@ -57,11 +59,12 @@ class Query extends Component {
       return <LoadingScreen />;
     }
     if (this.state.error) {
-      return <ErrorScreen err={this.state.err} />;
+      return <ErrorScreen err={this.state.value} />;
     }
     return (
       <ScrollView>
         <Text>{this.state.value}</Text>
+        <Text>{this.state.value2}</Text>
       </ScrollView>
     );
   }

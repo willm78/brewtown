@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text } from "react-native";
 
 import FilterLink from "../containers/FilterLink";
-import { VisibilityFilters } from "../actions";
+import { VisibilityFilters } from "../actions/old";
 
 const Footer = () => {
   return (
